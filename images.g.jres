@@ -1,0 +1,17 @@
+{
+    "image1": {
+        "data": "hwQQABAAAAAAAAAAAAAAAPAPAAAAAAAA//j/////DwCIuN/9iNb//4j4G42IiIj4iPisjYhoiPiIuN1tiIiI+Ii43Z2Jhfj/iLjdnWlm+P+IuNttiIiI+Ij4rI2IaIj4iPgbjYiIiPiIuN/9iNb////4/////w8A8P8AAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "spy buddy"
+    },
+    "image2": {
+        "data": "hwQQABAAAAAAAAAAAAAAAPAPAAAAAAAA//z/////DwDMvN/9zNv//8z8G83MzMz8zPxozcy8zPzMvN29zMzM/My83a3Kxfz/zLzdrbq7/P/MvNu9zMzM/Mz8Zs3MvMz8zPwbzczMzPzMvN/9zNv////8/////w8A8P8AAAAAAAAAAAAAAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "spy"
+    },
+    "*": {
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64",
+        "namespace": "myImages"
+    }
+}
