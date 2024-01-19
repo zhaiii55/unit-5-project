@@ -7,6 +7,7 @@ let grandmacloseup: Sprite = null
 let pressA: Sprite = null
 scene.setBackgroundColor(15)
 tiles.setCurrentTilemap(tilemap`beggining`)
+let evilbees = sprites.create(assets.image`enemy 1`, SpriteKind.Enemy)
 let spy = sprites.create(assets.image`spy`, SpriteKind.Player)
 let spy_buddy = sprites.create(assets.image`spy buddy`, SpriteKind.Player)
 tiles.placeOnRandomTile(spy, sprites.castle.tilePath5)
