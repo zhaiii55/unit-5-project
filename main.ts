@@ -3,7 +3,7 @@ namespace SpriteKind {
     export const grnadmacloseup = SpriteKind.create()
 }
 let rock: Sprite = null
-let mySprite: Sprite = null
+let grandmacloseup: Sprite = null
 let pressA: Sprite = null
 scene.setBackgroundColor(15)
 tiles.setCurrentTilemap(tilemap`beggining`)
@@ -49,18 +49,20 @@ game.onUpdate(function () {
     if (spy.overlapsWith(grandma) || spy.overlapsWith(grandma)) {
         pressA = sprites.create(assets.image`pressA`, SpriteKind.Player)
         pressA.setPosition(75, 100)
+    } else {
+        sprites.destroy(pressA)
     }
-    if (controller.A.isPressed() && spy.overlapsWith(grandma) || controller.A.isPressed() && spy_buddy.overlapsWith(grandma)) {
-        mySprite = sprites.create(assets.image`Grandma close up 1`, SpriteKind.grnadmacloseup)
-        mySprite.setPosition(50, 60)
+    if (controller.B.isPressed() && spy.overlapsWith(grandma) || controller.B.isPressed() && spy_buddy.overlapsWith(grandma)) {
+        grandmacloseup = sprites.create(assets.image`Grandma close up 1`, SpriteKind.grnadmacloseup)
+        grandmacloseup.setPosition(50, 60)
         game.showLongText("My grandsin is missing!", DialogLayout.Bottom)
         game.showLongText("Help me find my grandson!", DialogLayout.Bottom)
         game.showLongText("Hes at the end of the maze...", DialogLayout.Bottom)
         game.showLongText("Please help me...", DialogLayout.Bottom)
         game.showLongText("Or else ill have to get a new one", DialogLayout.Bottom)
-    }
-    if (controller.B.isPressed()) {
-        pause(3000)
+        sprites.destroy(grandmacloseup)
+    } else if (controller.B.isPressed()) {
+        pause(100)
         rock = sprites.createProjectileFromSprite(assets.image`rock`, spy, 30, 30)
         rock = sprites.createProjectileFromSprite(assets.image`rock`, spy_buddy, 30, 30)
     }
