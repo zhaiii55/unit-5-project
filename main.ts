@@ -1,10 +1,12 @@
 namespace SpriteKind {
     export const NPC = SpriteKind.create()
     export const grnadmacloseup = SpriteKind.create()
+    export const weapon = SpriteKind.create()
 }
-let rock: Sprite = null
 let grandmacloseup: Sprite = null
 let pressA: Sprite = null
+let rock = sprites.create(assets.image`rock`, SpriteKind.weapon)
+let grandson = sprites.create(assets.image`missing grandson`, SpriteKind.Player)
 scene.setBackgroundColor(15)
 tiles.setCurrentTilemap(tilemap`beggining`)
 let evilbees = sprites.create(assets.image`enemy 1`, SpriteKind.Enemy)
@@ -46,26 +48,10 @@ assets.animation`grandma cries`,
 true
 )
 evilbees = sprites.create(assets.image`enemy 1`, SpriteKind.Enemy)
+tiles.placeOnTile(evilbees, tiles.getTileLocation(6, 1))
 animation.runImageAnimation(
 evilbees,
-[img`
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    `],
+assets.animation`evilbees`,
 500,
 true
 )
@@ -93,5 +79,12 @@ forever(function () {
         pause(100)
         rock = sprites.createProjectileFromSprite(assets.image`rock`, spy, 30, 30)
         rock = sprites.createProjectileFromSprite(assets.image`rock`, spy_buddy, 30, 30)
+    }
+    if (spy.overlapsWith(evilbees) || spy_buddy.overlapsWith(evilbees)) {
+        evilbees.follow(spy, 50)
+        evilbees.follow(spy_buddy, 50)
+    }
+    if (rock.overlapsWith(evilbees)) {
+        sprites.destroy(evilbees)
     }
 })
