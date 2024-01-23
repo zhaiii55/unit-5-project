@@ -45,13 +45,22 @@ assets.animation`grandma cries`,
 500,
 true
 )
+evilbees = sprites.create(assets.image`enemy 1`, SpriteKind.Enemy)
+animation.runImageAnimation(
+evilbees,
+assets.animation`evilbees`,
+500,
+true
+)
 game.onUpdate(function () {
     camera_cruz.setPosition((spy.x + spy_buddy.x) / 2, (spy.y + spy_buddy.y) / 2)
+})
+forever(function () {
     if (spy.overlapsWith(grandma) || spy.overlapsWith(grandma)) {
         pressA = sprites.create(assets.image`pressA`, SpriteKind.Player)
         pressA.setPosition(75, 100)
     } else {
-        sprites.destroy(pressA)
+        sprites.destroy(pressA, effects.spray, 500)
     }
     if (controller.B.isPressed() && spy.overlapsWith(grandma) || controller.B.isPressed() && spy_buddy.overlapsWith(grandma)) {
         grandmacloseup = sprites.create(assets.image`Grandma close up 1`, SpriteKind.grnadmacloseup)
@@ -62,6 +71,7 @@ game.onUpdate(function () {
         game.showLongText("Please help me...", DialogLayout.Bottom)
         game.showLongText("Or else ill have to get a new one", DialogLayout.Bottom)
         sprites.destroy(grandmacloseup)
+        sprites.destroy(pressA)
     } else if (controller.B.isPressed()) {
         pause(100)
         rock = sprites.createProjectileFromSprite(assets.image`rock`, spy, 30, 30)
